@@ -18,9 +18,14 @@ if __name__ == "__main__":
                         datefmt="%H:%M:%S")
 
     logging.info("Main    : antes de crear hilo")
-    x = threading.Thread(target=thread_function, args=(1,))
+    ##CREACION DEL HILO, Se agrego el demonio
+    x = threading.Thread(target=thread_function, args=(1,), daemon=True)
     logging.info("Main    : antes de ejecutar el hilo")
+    ##INICIO DEL HILO
     x.start()
     logging.info("Main    : Espera a que termine el hilo")
     # x.join()
-    logging.info("Main    :todo hecho")
+    logging.info("Main    : todo hecho")
+    
+    
+    

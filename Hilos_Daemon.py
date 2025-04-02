@@ -23,8 +23,11 @@ if __name__ == "__main__":
     logging.info("Main    : antes de ejecutar el hilo")
     ##INICIO DEL HILO
     x.start()
+    
+    ## join> > >Para indicar a un hilo que espere a que otro termine
+    #Si se descomenta esa línea, el hilo principal se pausará y esperará a que el hilo xtermine de ejecutarse
     logging.info("Main    : Espera a que termine el hilo")
-    # x.join()
+    x.join()
     logging.info("Main    : todo hecho")
     
     

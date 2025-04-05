@@ -6,7 +6,7 @@ import random
 
 class Pipeline:
     """
-    Class to allow a single element pipeline between producer and consumer.
+    Clase que permite una canalización de un único elemento entre el productor y el consumidor.
     """
     def __init__(self):
         self.message = 0
@@ -30,23 +30,23 @@ class Pipeline:
 SENTINEL = object()
 
 def producer(pipeline):
-    """Pretend we're getting a message from the network."""
+    """Imagina que recibimos un mensaje de la red.."""
     for index in range(10):
         message = random.randint(1, 101)
-        logging.info("Producer got message: %s", message)
+        logging.info("El productor recibió un mensaje.e: %s", message)
         pipeline.set_message(message, "Producer")
 
-    # Send a sentinel message to tell consumer we're done
+    #Envíe un mensaje centinela para avisarle al consumidor que hemos terminado
     pipeline.set_message(SENTINEL, "Producer")        
         
         
 def consumer(pipeline):
-    """Pretend we're saving a number in the database."""
+    """Imagina que estamos guardando un número en la base de datos.."""
     message = 0
     while message is not SENTINEL:
         message = pipeline.get_message("Consumer")
         if message is not SENTINEL:
-            logging.info("Consumer storing message: %s", message)        
+            logging.info("Mensaje de almacenamiento del consumidor: %s", message)        
         
 if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
